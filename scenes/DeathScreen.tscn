@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://dcctrdnskcmcm"]
+
+[ext_resource type="Script" path="res://scripts/DeathScreen.gd" id="1_s46ej"]
+
+[node name="DeathScreen" type="CanvasLayer"]
+script = ExtResource("1_s46ej")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 520.0
+offset_top = 144.0
+offset_right = 617.0
+offset_bottom = 170.0
+text = "You're dead!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 472.0
+offset_top = 200.0
+offset_right = 670.0
+offset_bottom = 226.0
+text = "Press [space] to try again."
+horizontal_alignment = 1
+vertical_alignment = 1

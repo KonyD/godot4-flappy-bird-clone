@@ -1,0 +1,54 @@
+[gd_scene load_steps=6 format=3 uid="uid://d1cvue26qknhd"]
+
+[ext_resource type="Script" path="res://scripts/Walls.gd" id="1_kbsdr"]
+[ext_resource type="Texture2D" uid="uid://dfjoxcfagxqqn" path="res://icon.svg" id="2_on8sc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ngey8"]
+size = Vector2(40.201, 127.989)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uicql"]
+size = Vector2(40.201, 127.989)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n4jyw"]
+size = Vector2(40, 190)
+
+[node name="Walls" type="Node2D"]
+script = ExtResource("1_kbsdr")
+
+[node name="UpperWall" type="Sprite2D" parent="."]
+modulate = Color(1, 0.0313726, 0.141176, 1)
+position = Vector2(0, -384)
+scale = Vector2(0.3125, 4.51563)
+texture = ExtResource("2_on8sc")
+
+[node name="UpperWallColl" type="Area2D" parent="."]
+position = Vector2(0, -384)
+scale = Vector2(0.995, 4.516)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UpperWallColl"]
+shape = SubResource("RectangleShape2D_ngey8")
+
+[node name="LowerWall" type="Sprite2D" parent="."]
+modulate = Color(1, 0.0313726, 0.141176, 1)
+position = Vector2(0, 384)
+scale = Vector2(0.3125, 4.51563)
+texture = ExtResource("2_on8sc")
+
+[node name="LowerWallColl" type="Area2D" parent="."]
+position = Vector2(1.52588e-05, 384)
+scale = Vector2(0.995, 4.516)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LowerWallColl"]
+position = Vector2(-1.53355e-05, -7.62939e-06)
+shape = SubResource("RectangleShape2D_uicql")
+
+[node name="PointArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PointArea"]
+shape = SubResource("RectangleShape2D_n4jyw")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(-9.53674e-07, 3.8147e-05)
+scale = Vector2(2, 67.3)
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

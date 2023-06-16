@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://cchikl2br102t"]
+
+[ext_resource type="Script" path="res://scripts/Game.gd" id="1_7safx"]
+[ext_resource type="PackedScene" uid="uid://c3nhd6e3e2oqp" path="res://scenes/Player.tscn" id="2_38osk"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_7safx")
+
+[node name="Player" parent="." instance=ExtResource("2_38osk")]
+position = Vector2(353, 335)
+metadata/_edit_group_ = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ScoreLabel" type="Label" parent="CanvasLayer"]
+offset_right = 96.0
+offset_bottom = 64.0
+text = "score: 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[connection signal="area_entered" from="Player/Detect" to="." method="_on_detect_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+
+[editable path="Player"]
